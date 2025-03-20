@@ -1,0 +1,41 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+poc-ui/node_modules
+poc-ui/.pnp
+poc-ui/.pnp.*
+poc-ui/.yarn/*
+poc-ui/!.yarn/patches
+poc-ui/!.yarn/plugins
+poc-ui/!.yarn/releases
+poc-ui/!.yarn/versions
+
+# testing
+poc-ui/coverage
+
+# next.js
+poc-ui/.next/
+poc-ui/out/
+
+# production
+poc-ui/build
+
+# misc
+poc-ui/.DS_Store
+poc-ui/*.pem
+
+# debug
+poc-ui/npm-debug.log*
+poc-ui/yarn-debug.log*
+poc-ui/yarn-error.log*
+poc-ui/.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+poc-ui/.env*
+
+# vercel
+poc-ui/.vercel
+
+# typescript
+poc-ui/*.tsbuildinfo
+poc-ui/next-env.d.ts
