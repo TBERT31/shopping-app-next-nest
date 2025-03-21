@@ -39,3 +39,60 @@ poc-ui/.vercel
 # typescript
 poc-ui/*.tsbuildinfo
 poc-ui/next-env.d.ts
+
+# compiled output
+poc-backend/dist
+poc-backend/node_modules
+poc-backend/build
+
+# Logs
+logs
+poc-backend/*.log
+poc-backend/npm-debug.log*
+poc-backend/pnpm-debug.log*
+poc-backend/yarn-debug.log*
+poc-backend/yarn-error.log*
+poc-backend/lerna-debug.log*
+
+# OS
+poc-backend/.DS_Store
+
+# Tests
+poc-backend/coverage
+poc-backend/.nyc_output
+
+# IDEs and editors
+poc-backend/.idea
+poc-backend/.project
+poc-backend/.classpath
+poc-backend/.c9/
+poc-backend/*.launch
+poc-backend/.settings/
+poc-backend/*.sublime-workspace
+
+# IDE - VSCode
+poc-backend/.vscode/*
+poc-backend/!.vscode/settings.json
+poc-backend/!.vscode/tasks.json
+poc-backend/!.vscode/launch.json
+poc-backend/!.vscode/extensions.json
+
+# dotenv environment variable files
+poc-backend/.env
+poc-backend/.env.development.local
+poc-backend/.env.test.local
+poc-backend/.env.production.local
+poc-backend/.env.local
+
+# temp directory
+poc-backend/.temp
+poc-backend/.tmp
+
+# Runtime data
+poc-backend/pids
+poc-backend/*.pid
+poc-backend/*.seed
+poc-backend/*.pid.lock
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+poc-backend/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
