@@ -5,6 +5,6 @@ import { CreateUserRequest } from './dto/create-user.request';
 export class UsersService {
 
     createUser(data: CreateUserRequest) {
-        return "";
+        console.log("User created", data);
     }
 }
