@@ -29,7 +29,7 @@ import { LoggerModule } from 'nestjs-pino';
       inject: [ConfigService],
     }),
     ConfigModule.forRoot(),
-    UsersModule
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
