@@ -10,7 +10,7 @@ export class UsersController {
     ) {}
 
     @Post()
-    @UseInterceptors(NoFilesInterceptor)
+    @UseInterceptors(NoFilesInterceptor())
     createUser(@Body() request : CreateUserRequest) {
         return this.usersService.createUser(request);  
     }
