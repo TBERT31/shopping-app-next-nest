@@ -5,13 +5,11 @@ import { NoFilesInterceptor } from '@nestjs/platform-express';
 
 @Controller('users')
 export class UsersController {
-    constructor(
-        private readonly usersService: UsersService,
-    ) {}
+  constructor(private readonly usersService: UsersService) {}
 
-    @Post()
-    @UseInterceptors(NoFilesInterceptor())
-    createUser(@Body() request : CreateUserRequest) {
-        return this.usersService.createUser(request);  
-    }
+  @Post()
+  @UseInterceptors(NoFilesInterceptor())
+  createUser(@Body() request: CreateUserRequest) {
+    return this.usersService.createUser(request);
+  }
 }
