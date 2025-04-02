@@ -1,5 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
+import { Response } from 'express';
 import { UsersService } from 'src/users/users.service';
 
 @Injectable()
@@ -17,5 +19,9 @@ export class AuthService {
         } catch (err) {
             throw new UnauthorizedException('Credentials are not valid.');
         }
+    }
+
+    async login(user: User, response: Response){
+        
     }
 }
