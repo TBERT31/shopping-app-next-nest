@@ -3,7 +3,7 @@ import * as ms from 'ms';
 import { User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 import { Response } from 'express';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 import { ConfigService } from '@nestjs/config';
 import { TokenPayload } from './token-payload.interface';
 import { JwtService } from '@nestjs/jwt';
