@@ -4,9 +4,12 @@ import { Button, Link, Stack, TextField } from "@mui/material";
 import NextLink from "next/link";
 import { useFormState } from "react-dom";
 import createUser from "./create-user";
+import { useState } from "react";
 
 export default function Signup() {
   const [state, formAction] = useFormState(createUser, { error: "" });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <form action={formAction} className="w-full max-w-xs">
@@ -16,6 +19,8 @@ export default function Signup() {
           label="Email"
           variant="outlined"
           type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           helperText={state.error}
           error={!!state.error}
         />
@@ -24,6 +29,8 @@ export default function Signup() {
           label="Password"
           variant="outlined"
           type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           helperText={state.error}
           error={!!state.error}
         />
