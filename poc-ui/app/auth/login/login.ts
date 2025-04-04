@@ -7,10 +7,14 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export default async function login(_prevState: FormError, formData: FormData) {
-    const { error } = await post("auth/login", formData);
-    if(error){
+    const { error, res } = await post("auth/login", formData);
+    if(error ){
         return { error };
     }
+    if(!res){
+        return { error: "No response from server" };
+    }
+    setAuthCookie(res);
     redirect("/");
 }
 
