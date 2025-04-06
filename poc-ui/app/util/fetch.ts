@@ -1,18 +1,18 @@
-import { Cookie } from "next/font/google";
 import { API_URL } from "../constants/api";
 import { getErrorMessage } from "./errors";
 import { cookies } from "next/headers";
 
-const getHeaders = () => ({
-    Cookie: cookies().toString(),
+const getHeaders = async () => ({
+    Cookie: (await cookies()).toString(),
 });
 
 export const post = async (path: string, formData: FormData) => {
+    const headers = await getHeaders();
     const res = await fetch(`${API_URL}/${path}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            ...getHeaders(),
+            ...(await getHeaders()),
         },
         body: JSON.stringify(Object.fromEntries(formData)),
     });
@@ -25,7 +25,7 @@ export const post = async (path: string, formData: FormData) => {
 
 export const get = async (path: string) => {
     const res = await fetch(`${API_URL}/${path}`, {
-        headers: {...getHeaders()},
+        headers: { ...(await getHeaders()) },
     });
     return res.json();
 }
