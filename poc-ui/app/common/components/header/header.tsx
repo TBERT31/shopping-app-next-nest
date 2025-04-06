@@ -15,7 +15,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { AuthContext } from '@/app/auth/auth-context';
+import Link from 'next/link';
 import { routes, unauthenticatedRoutes } from '../../constants/routes';
+import { useRouter } from 'next/navigation';
 
 interface HeaderProps {
   logout: () => Promise<void>;
@@ -23,6 +25,7 @@ interface HeaderProps {
 
 export default function Header({ logout }: HeaderProps) {
   const isAuthenticated = useContext(AuthContext);
+  const router = useRouter();
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
@@ -46,8 +49,8 @@ export default function Header({ logout }: HeaderProps) {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component={Link}
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -89,7 +92,10 @@ export default function Header({ logout }: HeaderProps) {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                <MenuItem key={page.title} onClick={() => {
+                  router.push(page.path);
+                  handleCloseNavMenu();
+                }}>
                   <Typography sx={{ textAlign: 'center' }}>{page.title}</Typography>
                 </MenuItem>
               ))}
@@ -118,7 +124,10 @@ export default function Header({ logout }: HeaderProps) {
             {pages.map((page) => (
               <Button
                 key={page.title}
-                onClick={handleCloseNavMenu}
+                onClick={ () => {
+                  router.push(page.path);
+                  handleCloseNavMenu();
+                }}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page.title}
@@ -148,7 +157,7 @@ const Settings = ({ logout }: HeaderProps) => {
         <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src="" />
                 </IconButton>
             </Tooltip>
             <Menu
