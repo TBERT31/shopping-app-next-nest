@@ -1,3 +1,5 @@
+"use client";
+
 import lightTheme from "./common/styles/light.theme";
 import { ThemeProvider } from "@mui/material";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
