@@ -3,8 +3,8 @@ import { Inter } from "next/font/google";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import "./globals.css";
 import { Container, CssBaseline, ThemeProvider } from "@mui/material";
-import lightTheme from "./styles/light.theme";
-import Header from "./components/header/header";
+import lightTheme from "./common/styles/light.theme";
+import Header from "./common/components/header/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
