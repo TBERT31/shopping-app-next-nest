@@ -7,7 +7,6 @@ const getHeaders = async () => ({
 });
 
 export const post = async (path: string, formData: FormData) => {
-    const headers = await getHeaders();
     const res = await fetch(`${API_URL}/${path}`, {
         method: "POST",
         headers: {

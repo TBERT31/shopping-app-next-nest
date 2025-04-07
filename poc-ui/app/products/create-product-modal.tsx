@@ -1,7 +1,10 @@
 "use client";
 
-import { Box, Button, Modal, Stack, TextField } from "@mui/material";
-import Link from "next/link";
+import { Box, Button, IconButton, Modal, Stack, TextField } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import { useState } from "react";
+import { FormResponse } from "../common/interfaces/form-response.interface";
+import createProduct from "./create-product";
 
 const styles = {
     position: "absolute",
@@ -25,28 +28,64 @@ export default function CreateProductModal({
     open, 
     handleClose
 }: CreateProductModalProps) {
+    const [response, setResponse] = useState<FormResponse>();
+
+    const onClose = () => {
+        setResponse(undefined);
+        handleClose();
+    }
+
     return (
-        <Modal open={open} onClose={handleClose}>
+        <Modal open={open} onClose={onClose}>
             <Box sx={styles}>
-                <form action="w-full max-w-xs">
-                <Stack spacing={2}>
-                    <TextField
-                        name="email"
-                        label="Email"
-                        variant="outlined"
-                        type="email"
-                    />
-                    <TextField
-                        name="password"
-                        label="Password"
-                        variant="outlined"
-                        type="password"
-                    />
-                    <Button type="submit" variant="contained">
-                        Signup
-                    </Button>
-                </Stack>
+
+                <Box sx={{ display: "flex", justifyContent: "flex-end",  mb: 1 }}>
+                    <IconButton onClick={onClose}>
+                        <CloseIcon />
+                    </IconButton>
+                </Box>
+
+                <form
+                    className="w-full max-w-xs"
+                    action={async (formData) => {
+                        const response = await createProduct(formData);
+                        setResponse(response);
+                        if (!response.error) {
+                        onClose();
+                        }
+                    }}
+                >
+                    <Stack spacing={2}>
+                        <TextField
+                            name="name"
+                            label="Name"
+                            variant="outlined"
+                            required
+                            helperText={response?.error}
+                            error={!!response?.error}
+                        />
+                        <TextField
+                            name="description"
+                            label="Description"
+                            variant="outlined"
+                            required
+                            helperText={response?.error}
+                            error={!!response?.error}
+                        />
+                        <TextField
+                            name="price"
+                            label="Price"
+                            required
+                            variant="outlined"
+                            helperText={response?.error}
+                            error={!!response?.error}
+                        />
+                        <Button type="submit" variant="contained">
+                            Submit
+                        </Button>
+                    </Stack>
                 </form>
+
             </Box>
         </Modal>
     )
