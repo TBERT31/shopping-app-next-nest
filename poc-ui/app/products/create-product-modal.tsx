@@ -1,6 +1,7 @@
 "use client";
 
-import { Box, Modal } from "@mui/material";
+import { Box, Button, Modal, Stack, TextField } from "@mui/material";
+import Link from "next/link";
 
 const styles = {
     position: "absolute",
@@ -27,7 +28,25 @@ export default function CreateProductModal({
     return (
         <Modal open={open} onClose={handleClose}>
             <Box sx={styles}>
-
+                <form action="w-full max-w-xs">
+                <Stack spacing={2}>
+                    <TextField
+                        name="email"
+                        label="Email"
+                        variant="outlined"
+                        type="email"
+                    />
+                    <TextField
+                        name="password"
+                        label="Password"
+                        variant="outlined"
+                        type="password"
+                    />
+                    <Button type="submit" variant="contained">
+                        Signup
+                    </Button>
+                </Stack>
+                </form>
             </Box>
         </Modal>
     )
