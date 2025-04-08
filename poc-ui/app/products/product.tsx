@@ -7,7 +7,7 @@ interface ProductProps{
 
 export default function Product({ product }: ProductProps) {
     return (
-        <Card className="p-4 my-2">
+        <Card className="p-4">
             <Typography variant="h4">{product.name}</Typography>
             <Typography>{product.description}</Typography>
             <Typography>{product.price} €</Typography>
