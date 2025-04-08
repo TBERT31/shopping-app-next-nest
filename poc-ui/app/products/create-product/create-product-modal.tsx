@@ -3,8 +3,8 @@
 import { Box, Button, IconButton, Modal, Stack, TextField } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
-import { FormResponse } from "../common/interfaces/form-response.interface";
-import createProduct from "./create-product";
+import { FormResponse } from "../../common/interfaces/form-response.interface";
+import createProduct from "../actions/create-product";
 
 const styles = {
     position: "absolute",
